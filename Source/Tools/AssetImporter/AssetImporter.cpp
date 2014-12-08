@@ -994,7 +994,14 @@ void BuildAndSaveAnimations(OutModel* model)
         String animOutName;
         
         if (animName.Empty())
+        {
             animName = "Anim" + String(i + 1);
+        }
+        else
+        {
+            animName.Replace(String("AnimStack::"),  String("Anim"));
+            animName.Replace(" ",  "");
+        }
         if (model)
             animOutName = GetPath(model->outName_) + GetFileName(model->outName_) + "_" + SanitateAssetName(animName) + ".ani";
         else
